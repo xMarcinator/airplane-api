@@ -1,0 +1,12 @@
+- [ ] Add airplane Model
+- [ ] Add airplane Controller
+- [ ] Add airport Model
+- [ ] Add airport Controller
+- [ ] Add flight Model
+- [ ] Add flight Controller
+- [ ] Add flight simulation
+- [ ] Add Dockerfile
+- [ ] Add docker-compose
+- [ ] Add CI/CD
+- [ ] Add tests
+- [ ] Add documentation
