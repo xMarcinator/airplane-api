@@ -1,8 +1,8 @@
-- [ ] Add airplane Model
+- [X] Add airplane Model
 - [ ] Add airplane Controller
-- [ ] Add airport Model
+- [X] Add airport Model
 - [ ] Add airport Controller
-- [ ] Add flight Model
+- [X] Add flight Model
 - [ ] Add flight Controller
 - [ ] Add flight simulation
 - [ ] Add Dockerfile
