@@ -1,4 +1,4 @@
-namespace AirplaneAPI.Models;
+namespace AirplaneAPI.Database.Models;
 
 public class Airplane
 {

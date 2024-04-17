@@ -1,12 +1,25 @@
 - [X] Add airplane Model
-- [ ] Add airplane Controller
+- [x] Add airplane Controller
+- [x] Add airplane Repository
 - [X] Add airport Model
-- [ ] Add airport Controller
+- [x] Add airport Controller
+- [x] Add airport Repository
 - [X] Add flight Model
-- [ ] Add flight Controller
+- [x] Add flight Controller
+- [x] Add flight Repository
 - [ ] Add flight simulation
-- [ ] Add Dockerfile
-- [ ] Add docker-compose
-- [ ] Add CI/CD
-- [ ] Add tests
 - [ ] Add documentation
+- [ ] Add Seeding to database
+- [ ] Complete baseContext
+- [ ] Add more endpoint to airplane (e.g. search by manufacturer, search by model)
+- [ ] Add more endpoint to airport (e.g. search by country, search by city)
+- [ ] Add more endpoint to flight (e.g. search by date, search by airport, search by airplane)
+- [ ] Add tests
+- [ ] Add CI/CD
+
+## Strecth Goals
+- [ ] Refactor Controllers to handle simple crud operations (DRY Code)
+- [ ] Refactor IRepository to handle simple crud operations
+- [x] Add Dockerfile
+- [ ] Add docker-compose
+- [ ] Add tests
