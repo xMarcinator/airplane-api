@@ -22,21 +22,7 @@ public static class AppSeed
             var ctx = (BaseContext)scope.ServiceProvider
                 .GetRequiredService(contextType);
             
-            tasks[i] = SeedContext(ctx, logger).ContinueWith(t =>
-            {
-                // Log any errors
-                if (t.IsFaulted)
-                {
-                    logger.LogError(t.Exception, "An error occurred while creating the database.");
-                }
-                
-                // Seed the database if it was migrated
-                if (t.Result)
-                {
-                    logger.LogInformation("Seeding database with initial data...");
-                    ctx.OnSeed(logger).Wait();
-                }
-            });
+            tasks[i] = SeedContext(ctx, logger);
         }
 
         await Task.WhenAll(tasks);
@@ -44,8 +30,19 @@ public static class AppSeed
         //throw new NotSupportedException($"Type '{provider.GetType()}' is not supported!");
 
     }
+
+    private static async Task SeedContext(BaseContext ctx, ILogger<Program> logger)
+    {
+        var migrated = await MigrateContext(ctx, logger);
+        
+        if (migrated)
+        {
+            logger.LogInformation("Seeding database {0} with initial data", ctx.GetType().Name);
+            ctx.OnSeed(logger).Wait();
+        }
+    }
     
-    private static async Task<Boolean> SeedContext(BaseContext ctx,ILogger<Program> logger)
+    private static async Task<Boolean> MigrateContext(BaseContext ctx,ILogger<Program> logger)
     {
         var db = ctx.Database;
         
