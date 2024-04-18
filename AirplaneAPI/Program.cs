@@ -1,6 +1,11 @@
 using AirplaneAPI.Database;
 using AirplaneAPI.Database.Repositories.Implementation;
 using AirplaneAPI.Database.Repositories.Interface;
+using AirplaneAPI.utils;
+using dotenv.net;
+using Microsoft.EntityFrameworkCore;
+
+DotEnv.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +22,9 @@ builder.Services.AddScoped<IAirportRepo,AirportRepo>();
 
 var app = builder.Build();
 
+
+var seedingTask =  app.SeedContexts(builder.Services);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -29,6 +37,13 @@ app.MapControllers();
 
 app.MapControllerRoute(name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.UseHttpsRedirection();
 
+Task.WaitAll(seedingTask);
+
 app.Run();
+
+public partial class Program
+{
+}

@@ -21,6 +21,8 @@ public class Airplane
     public int FuelCapacity { get; set; }
     public int FuelConsumption { get; set; }
     public int MaxSpeed { get; set; }
+    
+    public List<Flight> Flights { get; set; }
 }
 
 public enum PlaneType

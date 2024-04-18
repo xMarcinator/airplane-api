@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace AirplaneAPI.Database.Models;
 
 public class Airport
@@ -12,4 +14,6 @@ public class Airport
     public double Timezone { get; set; }
     public string DST { get; set; }
     public string TzDatabaseTimeZone { get; set; }
+    public List<Flight> Departures { get; set; }
+    public List<Flight> Arrivals { get; set; }
 }
