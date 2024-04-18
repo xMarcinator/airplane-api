@@ -9,8 +9,8 @@
 - [x] Add flight Repository
 - [ ] Add flight simulation
 - [ ] Add documentation
-- [ ] Add Seeding to database
-- [ ] Complete baseContext
+- [x] Add Seeding to database
+- [x] Complete baseContext
 - [ ] Add more endpoint to airplane (e.g. search by manufacturer, search by model)
 - [ ] Add more endpoint to airport (e.g. search by country, search by city)
 - [ ] Add more endpoint to flight (e.g. search by date, search by airport, search by airplane)
