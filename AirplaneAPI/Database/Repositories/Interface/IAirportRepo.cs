@@ -16,4 +16,18 @@ public interface IAirportRepo : IRepository<Airport,int>
     /// <param name="departureAirportId">Airport ID</param>
     /// <returns></returns>
     Task<IEnumerable<Flight>?> GetArrivals(int departureAirportId);
+
+    /// <summary>
+    /// Get an airport by its IATA code
+    /// </summary>
+    /// <param name="airportIata">IATA Code</param>
+    /// <returns></returns>
+    Task<Airport?> ReadIATAAsync(string airportIata);
+
+    /// <summary>
+    /// Get an airport by its ICAO code
+    /// </summary>
+    /// <param name="icao">ICAO code</param>
+    /// <returns></returns>
+    Task<Airport?> ReadICAOAsync(string icao);
 }

@@ -77,5 +77,28 @@ public class AirportRepo(ApplicationDbContext context)  : IAirportRepo
         
         return entity.Arrivals;
     }
-    
+
+    public async Task<Airport?> ReadIATAAsync(string airportIata)
+    {
+        var entity = await context.Airports.Include(a => a.Arrivals).FirstOrDefaultAsync(a=>a.IATA == airportIata);
+        // If the entity is null, indicate no airport was found. Redundant check, but allow for future changes
+        if (entity == null)
+        {
+            return null;
+        }
+        
+        return entity;
+    }
+
+    public async Task<Airport?> ReadICAOAsync(string icao)
+    {
+        var entity = await context.Airports.Include(a => a.Arrivals).FirstOrDefaultAsync(a=>a.ICAO == icao);
+        // If the entity is null, indicate no airport was found. Redundant check, but allow for future changes
+        if (entity == null)
+        {
+            return null;
+        }
+        
+        return entity;
+    }
 }
