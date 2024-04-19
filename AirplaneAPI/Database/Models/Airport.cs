@@ -11,4 +11,5 @@ public class Airport : AirportDTO
     public List<Flight> Departures { get; set; }
     [JsonIgnore]
     public List<Flight> Arrivals { get; set; }
+
 }

@@ -7,8 +7,6 @@ namespace AirplaneAPI.Database.Models;
 public class Flight : FlightDTO
 {
     public int Id { get; set; }
-    public int DepartureAirportId { get; set; } // Foreign Key
-    public int ArrivalAirportId { get; set; } // Foreign Key
     [JsonIgnore]
     public Airport DepartureAirport { get; set; } // Navigation Property
     [JsonIgnore]
