@@ -1,0 +1,15 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestProjectMapping/=41ACB03A_002D0491_002D4097_002DAE12_002D88B98976BACF/@EntryIndexedValue">0C4D7CDC-F3BD-4DDE-9CFF-21DBF30A7377</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestTemplateMapping/=xUnit/@EntryIndexedValue">33ff99d8-b1ad-4ed5-a4fd-376b97c2c841</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1f713ee5_002Da9a0_002D410d_002D8bb9_002Dd4635623230a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetFlightProgress_FlightNotFound_ReturnsNotFound" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::0C4D7CDC-F3BD-4DDE-9CFF-21DBF30A7377::net8.0::AirplaneAPITest.Controllers.FlightControllerTests.GetFlightProgress_FlightNotFound_ReturnsNotFound&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::0C4D7CDC-F3BD-4DDE-9CFF-21DBF30A7377::net8.0::AirplaneAPITest.Controllers.FlightControllerTests.GetFlightProgress_FlightExists_ReturnsFlightProgress&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b277caa3_002Df404_002D4237_002D9219_002Da95dcc58d8a8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetFlightPosition_FlightHasNotDeparted_ReturnsCorrectProgress" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::0C4D7CDC-F3BD-4DDE-9CFF-21DBF30A7377::net8.0::AirplaneAPITest.Simulation.FlightProgressUtilsTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::0C4D7CDC-F3BD-4DDE-9CFF-21DBF30A7377::net8.0::AirplaneAPITest.Controllers.FlightControllerTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

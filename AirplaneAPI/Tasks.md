@@ -13,8 +13,8 @@
 - [x] Complete baseContext
 - [x] Add more endpoint to airport (e.g. search by Arrivals, search by Departures)
 - [x] Add more endpoint to flight (e.g. search by date, search by airport, search by airplane)
-- [ ] Add tests
-- [ ] Add CI/CD
+- [x] Add tests
+- [x] Add CI/CD
 
 ## Strecth Goals
 - [ ] Add more endpoint to airplane (e.g. search by manufacturer, search by model)

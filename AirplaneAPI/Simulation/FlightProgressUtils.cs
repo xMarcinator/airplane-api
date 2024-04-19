@@ -22,7 +22,9 @@ public static class FlightProgressUtils
                 FuelConsumed = 0,
                 TimeElapsed = TimeSpan.Zero,
                 DistanceToDestination = flight.Distance,
-                Status = FlightStatus.NotDeparted
+                Status = FlightStatus.NotDeparted,
+                CurrentLatitude = flight.DepartureAirport.Latitude,
+                CurrentLongitude = flight.DepartureAirport.Longitude
             };
         }
         
@@ -36,7 +38,9 @@ public static class FlightProgressUtils
                 FuelConsumed = flight.FuelCost,
                 TimeElapsed = flight.Duration,
                 DistanceToDestination = 0,
-                Status = FlightStatus.Arrived
+                Status = FlightStatus.Arrived,
+                CurrentLatitude = flight.ArrivalAirport.Latitude,
+                CurrentLongitude = flight.ArrivalAirport.Longitude
             };
         }
         
@@ -54,18 +58,16 @@ public static class FlightProgressUtils
         var x = flight.DepartureAirport.Latitude + dx * percent;
         var y = flight.DepartureAirport.Longitude + dy * percent;
         
-        var distance = GetDistanceFromLatLonInKm(flight.DepartureAirport.Latitude, flight.DepartureAirport.Longitude, flight.ArrivalAirport.Latitude, flight.ArrivalAirport.Longitude);
-        
-        var distanceTraveled = distance * percent;
+        var distanceTraveled = flight.Distance * percent;
 
         return new FlightProgress
         {
             FuelConsumed = (int) (flight.FuelCost * percent),
-            DistanceToDestination = distance - distanceTraveled,
+            DistanceToDestination = flight.Distance - distanceTraveled,
             TraveledDistance = distanceTraveled,
             TimeElapsed = timeElapsed,
             CurrentLatitude = x,
-            CurrentLongitude = y
+            CurrentLongitude = y,
         };
     }
     

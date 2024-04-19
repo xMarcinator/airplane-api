@@ -15,5 +15,4 @@ public class Flight : FlightDTO
     public Airport ArrivalAirport { get; set; } // Navigation Property
     [JsonIgnore]
     public Airplane Airplane { get; set; } // Navigation Property
-   
 }
