@@ -17,6 +17,7 @@
 - [x] Add CI/CD
 
 ## Strecth Goals
+- [ ] Use external API to get airport information
 - [ ] Add more endpoint to airplane (e.g. search by manufacturer, search by model)
 - [ ] Refactor Controllers to handle simple crud operations (DRY Code)
 - [ ] Refactor IRepository to handle simple crud operations
