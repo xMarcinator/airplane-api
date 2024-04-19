@@ -1,5 +1,8 @@
+using AirplaneAPI.Database.DTO;
 using AirplaneAPI.Database.Models;
 using AirplaneAPI.Database.Repositories.Interface;
+using AirplaneAPI.Simulation;
+using AirplaneAPI.utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AirplaneAPI.Controllers;
@@ -9,13 +12,25 @@ namespace AirplaneAPI.Controllers;
 public class FlightController(IFlightRepo flightRepo) : Controller
 {
     private IFlightRepo _flightRepo = flightRepo;
-
-    //crud operations
-    //get all flights
+    
     [HttpGet("all")]
     public async Task<IEnumerable<Flight>> GetFlights()
     {
         return await _flightRepo.ReadAllAsync();
+    }
+    
+    [HttpGet("{flightId}/progress")]
+    public async Task<ActionResult<FlightProgress>> GetFlightProgress(int flightId)
+    {
+        // Get the flight with the airports included
+        var flight = await _flightRepo.GetFlightByIdWithAirports(flightId);
+        // If the flight is null, return a problem
+        if (flight == null)
+        {
+            return Problem(statusCode:StatusCodes.Status404NotFound, detail:"Flight not found");
+        }
+        // Return the flight progress
+        return FlightProgressUtils.GetFlightPosition(flight);
     }
     
     //get flight by id   
@@ -34,9 +49,9 @@ public class FlightController(IFlightRepo flightRepo) : Controller
     
     //create flight
     [HttpPost]
-    public async Task<ActionResult<Flight>> CreateFlight(Flight flight)
+    public async Task<ActionResult<Flight>> CreateFlight(FlightDTO flight)
     {
-        var model = await _flightRepo.CreateAsync(flight);
+        var model = await _flightRepo.CreateAsync(FlightDTO.ToAirport(flight));
         
         return CreatedAtAction(nameof(GetFlight), new {id = model.Id}, model);
     }
@@ -72,15 +87,4 @@ public class FlightController(IFlightRepo flightRepo) : Controller
         
         return flight;
     }
-    
-    //delete flight
-    [HttpDelete]
-    public async Task<ActionResult<Flight>> DeleteFlight(Flight flight)
-    {
-        var model = await _flightRepo.DeleteAsync(flight);
-        
-        return model;
-    }
-    
-    
 }

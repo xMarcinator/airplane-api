@@ -2,11 +2,38 @@ namespace AirplaneAPI.Database.Repositories.Interface;
 
 public interface IRepository<T,TK>
 {
+    /// <summary>
+    /// Read all entities
+    /// </summary>
     Task<IEnumerable<T>> ReadAllAsync();
-    
+    /// <summary>
+    /// Read entity by criteria
+    /// </summary>
+    /// <param name="criteria">Primary key of entity</param>
+    /// <returns></returns>
     Task<T?> ReadAsync(TK criteria);
+    /// <summary>
+    /// Create entity in database
+    /// </summary>
+    /// <param name="entity">Entity to create</param>
+    /// <returns></returns>
     Task<T> CreateAsync(T entity);
+    /// <summary>
+    /// Update entity in database
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <returns></returns>
     Task<T> UpdateAsync(T entity);
+    /// <summary>
+    /// Delete entity from database
+    /// </summary>
+    /// <param name="entity">Entity to be deleted</param>
+    /// <returns></returns>
     Task<T> DeleteAsync(T entity);
+    /// <summary>
+    /// Delete entity from database by criteria
+    /// </summary>
+    /// <param name="criteria">Primary key of Entity</param>
+    /// <returns></returns>
     Task<T?> DeleteAsync(TK criteria);
 }

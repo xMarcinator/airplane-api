@@ -1,3 +1,4 @@
+using AirplaneAPI.Database.DTO;
 using AirplaneAPI.Database.Models;
 using AirplaneAPI.Database.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
@@ -34,9 +35,9 @@ public class AirplaneController(IAirplaneRepo airplaneRepo) : Controller
     
     //create airplane
     [HttpPost]
-    public async Task<ActionResult<Airplane>> CreateAirplane(Airplane airplane)
+    public async Task<ActionResult<Airplane>> CreateAirplane(AirplaneDTO airplane)
     {
-        var model = await _airplaneRepo.CreateAsync(airplane);
+        var model = await _airplaneRepo.CreateAsync(AirplaneDTO.ToAirplane(airplane));
         
         return CreatedAtAction(nameof(GetAirplane), new {id = model.Id}, model);
     }
@@ -72,15 +73,4 @@ public class AirplaneController(IAirplaneRepo airplaneRepo) : Controller
         
         return airplane;
     }
-    
-    //delete airplane
-    [HttpDelete]
-    public async Task<ActionResult<Airplane>> DeleteAirplane(Airplane airplane)
-    {
-        var model = await _airplaneRepo.DeleteAsync(airplane);
-        
-        return model;
-    }
-    
-    
 }

@@ -1,11 +1,21 @@
 namespace AirplaneAPI.Database.Models;
 
-public class FlightProgress(Flight flight)
+public class FlightProgress
 {
-    public Flight Flight { get; set; } = flight;
+    public double TraveledDistance { get; set; } = 0;
+    public double FuelConsumed { get; set; } = 0;
+    public TimeSpan TimeElapsed { get; set; } = TimeSpan.Zero;
+    public double DistanceToDestination { get; set; } = 0;
+    public double CurrentLatitude { get; set; } = 0;
+    public double CurrentLongitude { get; set; } = 0;
+    
+    public FlightStatus Status { get; set; } = FlightStatus.InProgress;
+}
 
-    public int TraveledDistance { get; set; } = 0;
-    public int FuelConsumed { get; set; } = 0;
-    public int TimeElapsed { get; set; } = 0;
-    public int DistanceToDestination { get; set; } = 0;
+public enum FlightStatus
+{
+    NotDeparted,
+    InProgress,
+    Arrived,
+    Canceled
 }

@@ -11,7 +11,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Define the relationships between the models. Since entity framework can't handle the relationships between the models
+        //Entity framework can't handle the relationships between the models with multiple relations to the same model, we have to define the relationships manually.
         modelBuilder.Entity<Airport>()
             .HasMany<Flight>(a=>a.Arrivals)
             .WithOne(f=>f.ArrivalAirport)

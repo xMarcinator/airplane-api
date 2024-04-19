@@ -4,6 +4,9 @@ using AirplaneAPI.Database.Repositories.Interface;
 
 namespace AirplaneAPI.Simulation;
 
+/// <summary>
+/// Deprecated
+/// </summary>
 public class FlightSimulator
 {
     public List<FlightProgress> flightProgresses = new();
@@ -28,7 +31,7 @@ public class FlightSimulator
         {
             foreach (var flight in r.Result)
             {
-                flightProgresses.Add(new FlightProgress(flight));
+                flightProgresses.Add(new FlightProgress());
             }
         });
        
