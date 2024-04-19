@@ -51,6 +51,13 @@ public class FlightController(IFlightRepo flightRepo) : Controller
     [HttpPost]
     public async Task<ActionResult<Flight>> CreateFlight(FlightDTO flight)
     {
+        //TODO: Implement flight creation using AirportManager
+        //var departureAirport = await AirportManager.GetOrImportAirport(_flightRepo, iata: flight.);
+        
+        
+        //TODO: calculate the distance between the airports
+        
+        
         var model = await _flightRepo.CreateAsync(FlightDTO.ToAirport(flight));
         
         return CreatedAtAction(nameof(GetFlight), new {id = model.Id}, model);
