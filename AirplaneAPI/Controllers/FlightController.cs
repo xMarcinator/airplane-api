@@ -65,18 +65,11 @@ public class FlightController(IFlightRepo flightRepo) : Controller
     
     //update flight
     [HttpPut("{id}")]
-    public async Task<ActionResult<Flight>> UpdateFlightById(int id, Flight flight)
+    public async Task<ActionResult<Flight>> UpdateFlightById(int id, FlightDTO flight)
     {
-        flight.Id = id;
-        var model = await _flightRepo.UpdateAsync(flight);
-        
-        return CreatedAtAction(nameof(GetFlight), new {id = model.Id}, model);
-    }
-    
-    [HttpPut()]
-    public async Task<ActionResult<Flight>> UpdateFlight(Flight flight)
-    {
-        var model = await _flightRepo.UpdateAsync(flight);
+        Flight entity = FlightDTO.ToAirport(flight);
+        entity.Id = id;
+        var model = await _flightRepo.UpdateAsync(FlightDTO.ToAirport(flight));
         
         return CreatedAtAction(nameof(GetFlight), new {id = model.Id}, model);
     }

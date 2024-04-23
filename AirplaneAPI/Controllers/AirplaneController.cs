@@ -44,18 +44,11 @@ public class AirplaneController(IAirplaneRepo airplaneRepo) : Controller
     
     //update airplane
     [HttpPut("{id}")]
-    public async Task<ActionResult<Airplane>> UpdateAirplaneById(int id, Airplane airplane)
+    public async Task<ActionResult<Airplane>> UpdateAirplaneById(int id, AirplaneDTO airplane)
     {
-        airplane.Id = id;
-        var model = await _airplaneRepo.UpdateAsync(airplane);
-        
-        return CreatedAtAction(nameof(GetAirplane), new {id = model.Id}, model);
-    }
-    
-    [HttpPut()]
-    public async Task<ActionResult<Airplane>> UpdateAirplane(Airplane airplane)
-    {
-        var model = await _airplaneRepo.UpdateAsync(airplane);
+        var entity = AirplaneDTO.ToAirplane(airplane);
+        entity.Id = id;
+        var model = await _airplaneRepo.UpdateAsync(entity);
         
         return CreatedAtAction(nameof(GetAirplane), new {id = model.Id}, model);
     }

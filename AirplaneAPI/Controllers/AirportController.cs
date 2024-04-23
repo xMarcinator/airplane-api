@@ -45,22 +45,14 @@ public class AirportController(IAirportRepo airportRepo) : Controller
     
     //update airport
     [HttpPut("{id}")]
-    public async Task<ActionResult<Airport>> UpdateAirportById(int id, Airport airport)
+    public async Task<ActionResult<Airport>> UpdateAirportById(int id, AirportDTO airport)
     {
-        airport.Id = id;
-        var model = await _airportRepo.UpdateAsync(airport);
+        Airport entity = AirportDTO.ToAirport(airport);
+        entity.Id = id;
+        var model = await _airportRepo.UpdateAsync(entity);
         
         return CreatedAtAction(nameof(GetAirport), new {id = model.Id}, model);
     }
-    
-    [HttpPut()]
-    public async Task<ActionResult<Airport>> UpdateAirport(Airport airport)
-    {
-        var model = await _airportRepo.UpdateAsync(airport);
-        
-        return CreatedAtAction(nameof(GetAirport), new {id = model.Id}, model);
-    }
-    
     //delete airport
     [HttpDelete("{id}")]
     public async Task<ActionResult<Airport>> DeleteAirport(int id)
